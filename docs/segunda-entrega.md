@@ -15,7 +15,7 @@ As diretrizes preveem nota zero automática quando o software não executa, igno
 
 ## Ordem de trabalho para retomar depois
 
-1. Fechar as [decisões de negócio](decisoes-pendentes.md).
+1. Usar as [regras de negócio consolidadas](regras-de-negocio.md) como especificação da implementação.
 2. Definir versões e configuração do ambiente Java/MySQL.
 3. Criar as classes de domínio e o script SQL.
 4. Implementar cadastro de usuários e CRUD de livros.
@@ -35,7 +35,7 @@ Os responsáveis e períodos do planejamento original estão no [README](../READ
 - [ ] RF04: aceitar ou recusar apenas como proprietário responsável.
 - [ ] RF04: tornar o livro indisponível após o aceite.
 - [ ] RF05: registrar devolução de empréstimo.
-- [ ] RF05: confirmar troca conforme a regra final acordada.
+- [ ] RF05: confirmar troca transferindo o exemplar ao solicitante e retornando a DISPONIVEL.
 - [ ] RF06: consultar histórico de livros ofertados e solicitados.
 - [ ] Demonstrar classe abstrata/interface, herança, composição e @Override em uso.
 - [ ] Demonstrar que fechar e reabrir o programa preserva os dados.
@@ -49,6 +49,8 @@ Os responsáveis e períodos do planejamento original estão no [README](../READ
 ## Roteiro sugerido de demonstração
 
 Cadastrar dois usuários; cadastrar um livro; consultar e editar seus dados; solicitar com o segundo usuário; tentar outro pedido; aceitar como proprietário; concluir a negociação; consultar o histórico; reiniciar e verificar os dados. Demonstrar a recusa e a exclusão com registros separados, além dos dois tipos de negociação.
+
+Os [cenários de aceite](regras-de-negocio.md) detalham os casos de concorrência, permissões, transferência, exclusão e preservação do histórico a testar.
 
 ## Instruções de execução a completar junto com o código
 

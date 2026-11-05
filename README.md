@@ -36,7 +36,13 @@ A numeração e o conteúdo abaixo espelham o PDF da primeira entrega.
 
 A segunda entrega exige **CRUD completo da entidade principal (Livro)**: cadastro, consulta, edição e exclusão. Esse detalhamento complementa RF02; não substitui os demais requisitos.
 
-As ambiguidades sobre troca, disponibilidade e histórico estão em [decisões pendentes](docs/decisoes-pendentes.md). Sugestões nesse documento ainda não constituem mudanças aprovadas no escopo.
+As lacunas do planejamento foram detalhadas nas [regras de negócio consolidadas](docs/regras-de-negocio.md), preservando RF01–RF06. O [registro de decisões](docs/decisoes-pendentes.md) documenta as escolhas e as pendências administrativas.
+
+- Pedidos PENDENTES e ACEITOS bloqueiam novas solicitações.
+- No empréstimo, a devolução mantém o proprietário e libera o exemplar.
+- Na troca, a confirmação transfere o exemplar ao solicitante e o torna disponível, como prevê RF05.
+- O histórico preserva os participantes e os dados da negociação da época.
+- A exclusão de livros com solicitações vinculadas é impedida.
 
 ## Tecnologias e arquitetura planejadas
 
@@ -69,6 +75,7 @@ Consulte os [diagramas de classes e banco](docs/diagramas.md).
 ├── docs/
 │   ├── README.md
 │   ├── diagramas.md
+│   ├── regras-de-negocio.md
 │   ├── decisoes-pendentes.md
 │   └── segunda-entrega.md
 ├── database/
@@ -116,8 +123,8 @@ Ainda não há aplicação ou script de criação do banco para executar. As ver
 - [x] Cronograma original e responsáveis registrados.
 - [x] Estrutura real de pastas criada.
 - [x] Diagramas de planejamento disponíveis no repositório.
-- [x] Pendências e checklist da segunda entrega documentados.
-- [ ] Decisões de negócio pendentes resolvidas pelo grupo.
+- [x] Regras de negócio, decisões e checklist da segunda entrega documentados.
+- [x] Lacunas de negócio resolvidas conforme a primeira entrega e a autorização do grupo.
 - [ ] Classes Java e pilares de POO implementados.
 - [ ] CRUD completo de livros implementado.
 - [ ] Solicitações, aceite/recusa, finalização e histórico implementados.

@@ -1,7 +1,8 @@
 # Documentação
 
 - [Diagramas de classes e banco](diagramas.md): representação editável do planejamento.
-- [Decisões pendentes](decisoes-pendentes.md): pontos que o grupo precisa fechar antes da implementação.
+- [Regras de negócio](regras-de-negocio.md): especificação consolidada e critérios de aceite.
+- [Registro de decisões](decisoes-pendentes.md): escolhas de negócio e pendências administrativas.
 - [Segunda entrega](segunda-entrega.md): critérios, sequência de trabalho e roteiro de verificação.
 - [Requisitos e cronograma](../README.md): fonte central no repositório.
 
