@@ -1,228 +1,126 @@
 # Sebo Colaborativo
 
-## Sistema de Troca e Empréstimo de Livros Acadêmicos entre Estudantes
+Sistema de troca e empréstimo de livros acadêmicos entre estudantes.
 
-Projeto desenvolvido como parte da *Atividade de Estudo Programada (AEP)* do 4º semestre de 2026.2 dos cursos de *Engenharia de Software* e *Análise e Desenvolvimento de Sistemas* da UniCesumar.
+Projeto da Atividade de Estudo Programada (AEP), 4º semestre de 2026.2, UniCesumar — Maringá/PR.
 
-### Integrantes
+**Integrantes:** Cauã Olivastro Braga e João Pedro Parra Lopes.  
+**Turma:** ESOFT4S-NB.  
+**Repositório:** https://github.com/Caua-07/aep-ESOFT4SNB
 
-* Cauã Olivastro Braga
-* João Pedro Parra Lopes
+> Status: planejamento e estrutura do repositório organizados. A implementação Java, os scripts SQL e os testes ainda estão pendentes. O projeto ainda não é executável.
 
-*Turma:* ESOFT4S-NB
+## Problema e proposta
 
----
+Estudantes adquirem livros e apostilas de alto custo para um semestre e depois deixam esses materiais sem uso, enquanto colegas precisam dos mesmos conteúdos. A proposta é organizar o contato entre quem oferece e quem procura livros, com controle de disponibilidade, solicitações e histórico.
 
-## Sobre o Projeto
+A descoberta descrita na primeira entrega destaca a dispersão das ofertas em grupos de mensagens e a necessidade de impedir negociações simultâneas para o mesmo livro.
 
-O *Sebo Colaborativo* é uma aplicação desenvolvida em Java para facilitar a troca e o empréstimo de livros acadêmicos entre estudantes.
+## Alinhamento aos ODS
 
-A proposta surgiu a partir da identificação de uma situação comum no ambiente acadêmico: estudantes podem adquirir livros e apostilas de alto custo para utilização durante um semestre e, posteriormente, deixar esses materiais sem uso, enquanto outros estudantes precisam dos mesmos conteúdos e podem ter dificuldade para adquiri-los.
+- **ODS 4 — Educação de Qualidade:** ampliar o acesso a materiais didáticos e reduzir a barreira financeira.
+- **ODS 12 — Consumo e Produção Responsáveis:** incentivar a circulação e o reaproveitamento dos materiais existentes.
 
-O sistema busca criar um meio organizado para conectar estudantes que possuem livros disponíveis com estudantes que necessitam desses materiais, incentivando o reaproveitamento e reduzindo gastos com novas aquisições.
+## Requisitos da primeira entrega
 
----
+A numeração e o conteúdo abaixo espelham o PDF da primeira entrega.
 
-## Objetivos de Desenvolvimento Sustentável (ODS)
+| ID | Requisito |
+| --- | --- |
+| RF01 | O sistema deve permitir o cadastro de usuários, com nome completo, e-mail institucional, curso e telefone. |
+| RF02 | O sistema deve permitir o cadastro de livros, com título, autor, disciplina relacionada, estado de conservação e tipo de oferta, sendo troca ou empréstimo. |
+| RF03 | O sistema deve permitir que um usuário solicite um livro disponível, registrando a data da solicitação, sendo permitida apenas uma solicitação ativa por livro disponível. |
+| RF04 | O sistema deve permitir que o proprietário do livro aceite ou recuse uma solicitação recebida, atualizando o status do livro de “disponível” para “indisponível” quando aceita. |
+| RF05 | O sistema deve permitir o registro da devolução, no caso de empréstimos, ou da confirmação da troca, no caso de trocas, retornando o status do livro para “disponível”. |
+| RF06 | O sistema deve permitir a consulta do histórico de livros ofertados e solicitados por um usuário. |
 
-O projeto está alinhado aos seguintes Objetivos de Desenvolvimento Sustentável da ONU:
+A segunda entrega exige **CRUD completo da entidade principal (Livro)**: cadastro, consulta, edição e exclusão. Esse detalhamento complementa RF02; não substitui os demais requisitos.
 
-### ODS 4 — Educação de Qualidade
+As ambiguidades sobre troca, disponibilidade e histórico estão em [decisões pendentes](docs/decisoes-pendentes.md). Sugestões nesse documento ainda não constituem mudanças aprovadas no escopo.
 
-O sistema contribui para ampliar o acesso a materiais didáticos por meio do compartilhamento entre estudantes, reduzindo a barreira financeira relacionada à aquisição de livros e outros materiais acadêmicos.
+## Tecnologias e arquitetura planejadas
 
-### ODS 12 — Consumo e Produção Responsáveis
+- **Java:** tipagem e recursos de orientação a objetos para representar o domínio.
+- **MySQL:** persistência relacional e integridade entre usuários, livros e solicitações.
+- **JDBC / MySQL Connector/J:** comunicação entre Java e MySQL.
+- **Camadas:** Model, DAO, Service e Controller/Main.
 
-O sistema incentiva o reaproveitamento e a circulação de materiais acadêmicos já existentes, reduzindo o desperdício e a necessidade de novas compras e impressões.
+| Camada | Responsabilidade |
+| --- | --- |
+| Model | Entidades, encapsulamento e comportamentos do domínio. |
+| DAO | Consultas e persistência no banco. |
+| Service | Regras de negócio e coordenação das operações. |
+| Controller/Main | Entrada do usuário e fluxo da aplicação. |
 
----
+O planejamento prevê a classe abstrata `Livro`, as subclasses `LivroTroca` e `LivroEmprestimo`, sobrescrita de `finalizarNegociacao()` com `@Override` e composição 1:N entre usuário e livros.
 
-## Requisitos do Sistema
+Consulte os [diagramas de classes e banco](docs/diagramas.md).
 
-Os requisitos abaixo representam o escopo funcional definido para o projeto.
+## Estrutura do repositório
 
-1. O sistema deve permitir o cadastro de usuários, com nome completo, e-mail institucional, curso e telefone.
-
-2. O sistema deve permitir o cadastro de livros, com título, autor, disciplina relacionada, estado de conservação e tipo de oferta, sendo troca ou empréstimo.
-
-3. O sistema deve permitir que um usuário solicite um livro disponível, registrando a data da solicitação.
-
-4. O sistema deve permitir que o proprietário do livro aceite ou recuse uma solicitação recebida.
-
-5. O sistema deve permitir apenas uma solicitação ativa por livro disponível.
-
-6. O sistema deve permitir o registro da devolução, no caso de empréstimos, ou da confirmação da troca, no caso de trocas, atualizando o status do livro.
-
-7. O sistema deve permitir a consulta do histórico de livros ofertados e solicitados por um usuário.
-
----
-
-## Regra de Negócio
-
-Um livro só pode possuir uma solicitação ativa por vez.
-
-Quando uma solicitação é aceita pelo ofertante, o status do livro deve ser alterado de *"disponível"* para *"indisponível"*.
-
-O livro retorna ao status *"disponível"* após a confirmação da devolução, no caso de empréstimo, ou após a confirmação da efetivação da troca.
-
----
-
-## Tecnologias
-
-### Linguagem
-
-* Java
-
-### Banco de Dados
-
-* MySQL
-
-### Conexão com o Banco
-
-* JDBC / MySQL Connector/J
-
-### Arquitetura
-
-O projeto utiliza uma arquitetura em camadas:
-
-text
-Model → DAO → Service → Controller/Main
-
-
-As camadas possuem as seguintes responsabilidades:
-
-* *Model:* representação das entidades e seus comportamentos.
-* *DAO:* acesso e persistência dos dados no banco.
-* *Service:* aplicação das regras de negócio.
-* *Controller/Main:* controle do fluxo da aplicação e interação com as funcionalidades do sistema.
-
----
-
-## Programação Orientada a Objetos
-
-O projeto utilizará os principais conceitos de Programação Orientada a Objetos exigidos pela AEP, incluindo:
-
-* Classe abstrata;
-* Herança;
-* Encapsulamento;
-* Polimorfismo;
-* Sobrescrita de métodos com @Override;
-* Composição.
-
-A classe abstrata Livro será utilizada como base para as classes específicas de negociação:
-
-text
-Livro
-├── LivroTroca
-└── LivroEmprestimo
-
-
-O método finalizarNegociacao() será sobrescrito pelas subclasses para representar comportamentos específicos de cada tipo de negociação.
-
----
-
-## Estrutura do Repositório
-
-A estrutura inicial do projeto está organizada da seguinte forma:
-
-text
-/
+```text
+.
 ├── src/
-│   └── ...
-│
+│   ├── model/.gitkeep
+│   ├── dao/.gitkeep
+│   ├── service/.gitkeep
+│   ├── controller/.gitkeep
+│   └── README.md
 ├── docs/
-│   └── ...
-│
+│   ├── README.md
+│   ├── diagramas.md
+│   ├── decisoes-pendentes.md
+│   └── segunda-entrega.md
 ├── database/
-│   └── ...
-│
+│   └── README.md
+├── .gitignore
+├── CONTRIBUTING.md
 └── README.md
+```
 
+As pastas de código estão reservadas com arquivos `.gitkeep`, pois o Git não versiona pastas vazias.
 
-### Diretórios
+## Cronograma da primeira entrega
 
-* /src — código-fonte da aplicação.
-* /docs — documentação e diagramas do projeto.
-* /database — scripts relacionados ao banco de dados.
-* README.md — documentação principal do projeto.
+Planejamento original do PDF, preservado para rastreabilidade. As datas não representam comprovação de execução. O prazo oficial da segunda entrega não consta nas diretrizes fornecidas.
 
----
+| Sprint / período de 2026 | Épico | User story | Responsável |
+| --- | --- | --- | --- |
+| Sprint 1 — 11/09 a 25/09 | Cadastros e Perfis | COMO UM estudante EU QUERO cadastrar meus dados e os livros que possuo PARA QUE outros estudantes possam encontrá-los para troca ou empréstimo. | Cauã |
+| Sprint 2 — 26/09 a 10/10 | Motor de Solicitações | COMO UM estudante EU QUERO solicitar um livro disponível PARA QUE eu possa obtê-lo por troca ou empréstimo. | João Pedro |
+| Sprint 3 — 11/10 a 25/10 | Aceite e Regras de Negócio | COMO UM proprietário de um livro EU QUERO aceitar ou recusar solicitações recebidas PARA QUE apenas uma negociação fique ativa por vez. | Cauã e João Pedro |
+| Sprint 4 — 26/10 até a 2ª entrega | Finalização e Histórico | COMO UM estudante EU QUERO confirmar a devolução ou a troca e consultar meu histórico de negociações PARA QUE eu acompanhe os livros que ofertei e solicitei. | Todos |
 
-## Diagramas
+## Segunda entrega
 
-A documentação do projeto contém:
+O foco é entregar software funcional e integrado, mantendo aderência ao planejamento.
 
-* Diagrama de Classes;
-* Diagrama Entidade-Relacionamento (DER).
+| Critério | Peso da tabela de avaliação |
+| --- | --- |
+| Aderência ao planejamento | 0,2 |
+| Pilares de POO | 0,3 |
+| CRUD funcional da entidade principal | 0,3 |
+| Persistência em banco | 0,2 |
 
-O Diagrama de Classes contempla:
+Também são exigidas contribuições de todos os integrantes e instruções claras de instalação e execução. Não é exigida interface gráfica avançada.
 
-* Herança entre Livro, LivroTroca e LivroEmprestimo;
-* Polimorfismo por meio da sobrescrita de finalizarNegociacao();
-* Composição com multiplicidade 1:N.
+Veja o [checklist e roteiro da segunda entrega](docs/segunda-entrega.md) e as [orientações de contribuição](CONTRIBUTING.md).
 
-O DER representa as entidades principais:
+## Execução
 
-* USUARIO;
-* LIVRO;
-* SOLICITACAO.
+Ainda não há aplicação ou script de criação do banco para executar. As versões do JDK, dependências, configuração de conexão e comandos de execução serão documentados quando a implementação for concluída e validada.
 
----
+## Status
 
-## Cronograma de Execução
-
-O cronograma abaixo corresponde ao planejamento apresentado na primeira entrega da AEP.
-
-| Data                       | Atividade                                            | Responsável |
-| -------------------------- | ---------------------------------------------------- | ----------- |
-| 07/09/2026                 | Revisão dos requisitos e concepção do projeto        | Todos       |
-| 07/09/2026 – 08/09/2026    | Revisão do Diagrama de Classes e DER                 | Todos       |
-| 08/09/2026                 | Organização do repositório e estrutura de pastas     | Cauã        |
-| 08/09/2026 – 09/09/2026    | Redação e revisão do PDF da 1ª entrega               | João Pedro  |
-| 09/09/2026                 | Revisão final da documentação                        | Todos       |
-| 10/09/2026                 | Entrega da 1ª etapa da AEP                           | Todos       |
-| Após 10/09/2026            | Implementação das classes — camada Model             | Todos       |
-| Após 10/09/2026            | Implementação do CRUD e conexão com o banco de dados | Todos       |
-| Após 10/09/2026            | Testes e ajustes finais                              | Todos       |
-| Data oficial da 2ª entrega | Entrega final — 2º Bimestre                          | Todos       |
-
----
-
-## Segunda Entrega
-
-Na segunda etapa da AEP será desenvolvida a versão funcional e integrada do sistema, contemplando:
-
-* Implementação das classes;
-* Aplicação dos conceitos de Programação Orientada a Objetos;
-* CRUD completo da entidade principal;
-* Conexão ativa com o banco de dados;
-* Persistência dos dados;
-* Testes e ajustes finais.
-
-A implementação deverá permanecer de acordo com os requisitos e o planejamento definidos na primeira entrega.
-
----
-
-## Status do Projeto
-
-*1ª Entrega — Planejamento, Escopo e Estruturação*
-
-* [x] Definição do problema
-* [x] Definição dos stakeholders
-* [x] Definição da regra de negócio
-* [x] Definição dos requisitos
-* [x] Alinhamento com os ODS
-* [x] Escolha das tecnologias
-* [x] Definição da arquitetura
-* [x] Diagrama de Classes
-* [x] DER
-* [x] Estrutura inicial do repositório
-* [ ] Implementação completa do sistema
-
----
-
-## Instituição
-
-*UniCesumar — Centro Universitário de Maringá*
-
-*Atividade de Estudo Programada — AEP 4º Semestre (2026.2)*
+- [x] Problema, ODS e requisitos documentados.
+- [x] Cronograma original e responsáveis registrados.
+- [x] Estrutura real de pastas criada.
+- [x] Diagramas de planejamento disponíveis no repositório.
+- [x] Pendências e checklist da segunda entrega documentados.
+- [ ] Decisões de negócio pendentes resolvidas pelo grupo.
+- [ ] Classes Java e pilares de POO implementados.
+- [ ] CRUD completo de livros implementado.
+- [ ] Solicitações, aceite/recusa, finalização e histórico implementados.
+- [ ] Script SQL e conexão real com MySQL.
+- [ ] Testes e instruções de execução validados.
+- [ ] Contribuições efetivas de todos verificadas antes da entrega.

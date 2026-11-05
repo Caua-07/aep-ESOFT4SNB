@@ -1,0 +1,26 @@
+# Java e builds
+*.class
+target/
+build/
+out/
+.gradle/
+
+# IDEs
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.vscode/
+
+# Configuração local e credenciais
+.env
+.env.*
+!.env.example
+application-local.properties
+database/local.properties
+
+# Arquivos temporários
+*.log
+.DS_Store
+Thumbs.db
