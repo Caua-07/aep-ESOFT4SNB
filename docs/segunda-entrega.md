@@ -28,9 +28,9 @@ Os responsáveis e períodos do planejamento original estão no [README](../READ
 
 ## Checklist de aceite
 
-- [ ] RF01: cadastrar usuário com os campos previstos.
-- [ ] RF02: cadastrar livro de troca e livro de empréstimo.
-- [ ] CRUD: consultar, editar e excluir um livro sem vínculos impeditivos.
+- [x] RF01: cadastrar usuário com os campos previstos.
+- [x] RF02: cadastrar livro de troca e livro de empréstimo.
+- [x] CRUD: consultar, editar e excluir um livro sem vínculos impeditivos.
 - [ ] RF03: solicitar livro disponível e impedir outra solicitação ativa.
 - [ ] RF04: aceitar ou recusar apenas como proprietário responsável.
 - [ ] RF04: tornar o livro indisponível após o aceite.
@@ -55,3 +55,7 @@ Os [cenários de aceite](regras-de-negocio.md) detalham os casos de concorrênci
 ## Instruções de execução a completar junto com o código
 
 Documentar versões, dependências, criação do banco, configuração local de credenciais, comandos de compilação, testes e início da aplicação. Não publicar senhas. Não declarar testes como aprovados antes de executá-los.
+
+## Progresso da etapa 1
+
+Cadastros e CRUD de livros implementados e validados. Permanecem pendentes os fluxos de RF03–RF06 e a composição/finalização polimórfica. Consulte [evidências da etapa](validacao-etapa1.md).

@@ -19,7 +19,7 @@ As lacunas de negócio foram resolvidas em 04/11/2026, por autorização do grup
 
 - Confirmar prazo oficial e canal de envio com a disciplina.
 - Confirmar o peso de POO: tabela de avaliação indica 0,3; orientação final menciona 0,4.
-- Escolher versão do JDK, ferramenta de build e versões das dependências ao iniciar a implementação.
+- Ambiente definido na etapa 1: Java 17, Maven 3.9+, MySQL 8.4, Connector/J 8.4.0; consultar o guia de execução.
 - Implementar e executar os critérios de aceite; documentar os comandos efetivamente verificados.
 
 Não há decisão de negócio bloqueando o início do código. As definições acima não devem ser apresentadas como funcionalidades já implementadas.
