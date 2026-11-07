@@ -1,11 +1,9 @@
 # Banco de dados
 
-Banco planejado: MySQL, acessado por JDBC / MySQL Connector/J.
+MySQL 8.4 com JDBC / Connector/J 8.4.0. Execute schema.sql no banco escolhido para criar usuarios, livros e solicitacoes. O script não apaga registros nem migra tabelas antigas diferentes.
 
-Tabelas previstas: usuarios, livros e solicitacoes. Consulte o [DER](../docs/diagramas.md).
+Cadastros e CRUD já usam banco real. solicitacoes está preparada para a próxima etapa; seus vínculos já impedem edição com pedido ativo e exclusão com histórico. Ainda não há criação de pedidos no programa.
 
-Na implementação, incluir nesta pasta o script SQL de criação das tabelas, chaves primárias e estrangeiras e restrições necessárias. O script deve ser compatível com as classes Java e com a versão de MySQL escolhida.
+As próximas operações de solicitação devem bloquear a linha do livro antes de verificar/criar pedidos, no mesmo protocolo transacional do CRUD.
 
-Ainda não existe script SQL nem conexão implementada. Credenciais e configurações locais não devem ser versionadas.
-
-O [modelo detalhado](../docs/diagramas.md) prevê os participantes originais e os dados da oferta na solicitação para preservar o histórico após trocas. A futura implementação deve seguir as [regras de negócio](../docs/regras-de-negocio.md), incluindo transações e bloqueio de solicitações concorrentes.
+Veja [execução](../docs/execucao.md), [DER](../docs/diagramas.md) e [regras](../docs/regras-de-negocio.md). Não versionar credenciais.
