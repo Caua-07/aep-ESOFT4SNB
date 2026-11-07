@@ -8,4 +8,10 @@ public class LivroTroca extends Livro {
 
     @Override
     public TipoOferta getTipoOferta() { return TipoOferta.TROCA; }
+    @Override
+    public void finalizarNegociacao(Usuario solicitante) {
+        validarFinalizacao(solicitante);
+        transferirPara(solicitante);
+        disponibilizar();
+    }
 }

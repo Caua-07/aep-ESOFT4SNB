@@ -8,4 +8,9 @@ public class LivroEmprestimo extends Livro {
 
     @Override
     public TipoOferta getTipoOferta() { return TipoOferta.EMPRESTIMO; }
+    @Override
+    public void finalizarNegociacao(Usuario solicitante) {
+        validarFinalizacao(solicitante);
+        disponibilizar();
+    }
 }
