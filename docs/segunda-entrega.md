@@ -13,7 +13,7 @@ Segundo as diretrizes, a entrega deve conter código-fonte completo, aplicação
 
 As diretrizes preveem nota zero automática quando o software não executa, ignora os pilares de POO ou diverge totalmente do planejamento. Listas em memória não substituem a persistência exigida.
 
-## Ordem de trabalho para retomar depois
+## Sequência de implementação utilizada
 
 1. Usar as [regras de negócio consolidadas](regras-de-negocio.md) como especificação da implementação.
 2. Definir versões e configuração do ambiente Java/MySQL.
@@ -28,20 +28,20 @@ Os responsáveis e períodos do planejamento original estão no [README](../READ
 
 ## Checklist de aceite
 
-- [ ] RF01: cadastrar usuário com os campos previstos.
-- [ ] RF02: cadastrar livro de troca e livro de empréstimo.
-- [ ] CRUD: consultar, editar e excluir um livro sem vínculos impeditivos.
-- [ ] RF03: solicitar livro disponível e impedir outra solicitação ativa.
-- [ ] RF04: aceitar ou recusar apenas como proprietário responsável.
-- [ ] RF04: tornar o livro indisponível após o aceite.
-- [ ] RF05: registrar devolução de empréstimo.
-- [ ] RF05: confirmar troca transferindo o exemplar ao solicitante e retornando a DISPONIVEL.
-- [ ] RF06: consultar histórico de livros ofertados e solicitados.
-- [ ] Demonstrar classe abstrata/interface, herança, composição e @Override em uso.
-- [ ] Demonstrar que fechar e reabrir o programa preserva os dados.
-- [ ] Testar entradas inválidas e transições de estado indevidas.
-- [ ] Testar que solicitações simultâneas não geram duas negociações ativas.
-- [ ] Verificar compatibilidade entre SQL, DER e classes Java.
+- [x] RF01: cadastrar usuário com os campos previstos.
+- [x] RF02: cadastrar livro de troca e livro de empréstimo.
+- [x] CRUD: consultar, editar e excluir um livro sem vínculos impeditivos.
+- [x] RF03: solicitar livro disponível e impedir outra solicitação ativa.
+- [x] RF04: aceitar ou recusar apenas como proprietário responsável.
+- [x] RF04: tornar o livro indisponível após o aceite.
+- [x] RF05: registrar devolução de empréstimo.
+- [x] RF05: confirmar troca transferindo o exemplar ao solicitante e retornando a DISPONIVEL.
+- [x] RF06: consultar histórico de livros ofertados e solicitados.
+- [x] Demonstrar classe abstrata/interface, herança, composição e @Override em uso.
+- [x] Demonstrar que fechar e reabrir o programa preserva os dados.
+- [x] Testar entradas inválidas e transições de estado indevidas.
+- [x] Testar que solicitações simultâneas não geram duas negociações ativas.
+- [x] Verificar compatibilidade entre SQL, DER e classes Java.
 - [ ] Executar seguindo apenas as instruções do README.
 - [ ] Conferir contribuições reais de Cauã e João Pedro.
 - [ ] Conferir prazo e forma de envio na disciplina.
@@ -55,3 +55,9 @@ Os [cenários de aceite](regras-de-negocio.md) detalham os casos de concorrênci
 ## Instruções de execução a completar junto com o código
 
 Documentar versões, dependências, criação do banco, configuração local de credenciais, comandos de compilação, testes e início da aplicação. Não publicar senhas. Não declarar testes como aprovados antes de executá-los.
+
+## Progresso da etapa 1
+
+Cadastros e CRUD de livros preservados. RF03–RF06, composição e finalização polimórfica implementados nesta etapa. Consulte [validação anterior](validacao-etapa1.md) e [validação atual](validacao-etapa2.md).
+
+Os itens técnicos marcados refletem execução neste ambiente Linux. A dupla ainda deve reproduzir as instruções em seu computador, revisar o PR e confirmar o prazo/canal de envio. A publicação do PR não equivale a merge nem entrega no Studeo.

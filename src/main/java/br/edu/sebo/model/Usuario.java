@@ -1,0 +1,53 @@
+package br.edu.sebo.model;
+
+import java.util.Locale;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Usuario {
+    private final List<Livro> livros = new ArrayList<>();
+    private final int id;
+    private final String nomeCompleto;
+    private final String emailInstitucional;
+    private final String curso;
+    private final String telefone;
+
+    public Usuario(int id, String nome, String email, String curso, String telefone) {
+        this.id = id;
+        this.nomeCompleto = Validacao.texto(nome, "Nome", 150);
+        this.emailInstitucional = Validacao.texto(email, "E-mail", 150).toLowerCase(Locale.ROOT);
+        if (!emailValido(emailInstitucional)) {
+            throw new IllegalArgumentException("Informe um e-mail válido.");
+        }
+        this.curso = Validacao.texto(curso, "Curso", 100);
+        this.telefone = Validacao.texto(telefone, "Telefone", 20);
+    }
+
+    private static boolean emailValido(String email) {
+        if (!email.matches("[^\\s@]+@[^\\s@]+")) return false;
+        String[] partes = email.split("@");
+        String nome = partes[0];
+        if (nome.startsWith(".") || nome.endsWith(".") || nome.contains("..")) return false;
+        String[] dominio = partes[1].split("\\.", -1);
+        if (dominio.length < 2) return false;
+        for (String rotulo : dominio) {
+            if (rotulo.length() > 63 || !rotulo.matches("[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")) return false;
+        }
+        return true;
+    }
+
+    public List<Livro> getLivros() { return List.copyOf(livros); }
+
+    // Apenas Livro coordena os dois lados da relação.
+    void adicionarLivro(Livro livro) {
+        if (!livros.contains(livro)) livros.add(livro);
+    }
+
+    void removerLivro(Livro livro) { livros.remove(livro); }
+
+    public int getId() { return id; }
+    public String getNomeCompleto() { return nomeCompleto; }
+    public String getEmailInstitucional() { return emailInstitucional; }
+    public String getCurso() { return curso; }
+    public String getTelefone() { return telefone; }
+}

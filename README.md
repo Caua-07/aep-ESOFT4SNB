@@ -8,7 +8,7 @@ Projeto da Atividade de Estudo Programada (AEP), 4º semestre de 2026.2, UniCesu
 **Turma:** ESOFT4S-NB.  
 **Repositório:** https://github.com/Caua-07/aep-ESOFT4SNB
 
-> Status: planejamento e estrutura do repositório organizados. A implementação Java, os scripts SQL e os testes ainda estão pendentes. O projeto ainda não é executável.
+> Status: RF01–RF06 implementados no terminal com persistência MySQL: cadastros, CRUD de livros, solicitações, aceite/recusa, devolução, troca e histórico. Validação técnica em [validacao-etapa2.md](docs/validacao-etapa2.md); revisão da dupla e envio acadêmico permanecem pendentes.
 
 ## Problema e proposta
 
@@ -44,10 +44,10 @@ As lacunas do planejamento foram detalhadas nas [regras de negócio consolidadas
 - O histórico preserva os participantes e os dados da negociação da época.
 - A exclusão de livros com solicitações vinculadas é impedida.
 
-## Tecnologias e arquitetura planejadas
+## Tecnologias e arquitetura
 
-- **Java:** tipagem e recursos de orientação a objetos para representar o domínio.
-- **MySQL:** persistência relacional e integridade entre usuários, livros e solicitações.
+- **Java 17:** tipagem e recursos de orientação a objetos para representar o domínio.
+- **MySQL 8.4:** persistência relacional e integridade entre usuários, livros e solicitações.
 - **JDBC / MySQL Connector/J:** comunicação entre Java e MySQL.
 - **Camadas:** Model, DAO, Service e Controller/Main.
 
@@ -58,7 +58,7 @@ As lacunas do planejamento foram detalhadas nas [regras de negócio consolidadas
 | Service | Regras de negócio e coordenação das operações. |
 | Controller/Main | Entrada do usuário e fluxo da aplicação. |
 
-O planejamento prevê a classe abstrata `Livro`, as subclasses `LivroTroca` e `LivroEmprestimo`, sobrescrita de `finalizarNegociacao()` com `@Override` e composição 1:N entre usuário e livros.
+O código utiliza a classe abstrata `Livro`, as subclasses `LivroTroca` e `LivroEmprestimo`, sobrescrita de `finalizarNegociacao(Usuario solicitante)` com `@Override` e composição 1:N entre usuário e livros.
 
 Consulte os [diagramas de classes e banco](docs/diagramas.md).
 
@@ -67,25 +67,32 @@ Consulte os [diagramas de classes e banco](docs/diagramas.md).
 ```text
 .
 ├── src/
-│   ├── model/.gitkeep
-│   ├── dao/.gitkeep
-│   ├── service/.gitkeep
-│   ├── controller/.gitkeep
+│   ├── main/java/br/edu/sebo/
+│   │   ├── config/
+│   │   ├── model/
+│   │   ├── dao/
+│   │   ├── service/
+│   │   └── controller/
+│   ├── test/java/br/edu/sebo/
 │   └── README.md
 ├── docs/
 │   ├── README.md
 │   ├── diagramas.md
 │   ├── regras-de-negocio.md
+│   ├── execucao.md
+│   ├── guia-do-codigo.md
 │   ├── decisoes-pendentes.md
 │   └── segunda-entrega.md
 ├── database/
+│   ├── schema.sql
 │   └── README.md
 ├── .gitignore
 ├── CONTRIBUTING.md
+├── pom.xml
 └── README.md
 ```
 
-As pastas de código estão reservadas com arquivos `.gitkeep`, pois o Git não versiona pastas vazias.
+O layout padrão Maven organiza código e testes e preserva as camadas planejadas. Veja o [guia do código](docs/guia-do-codigo.md).
 
 ## Cronograma da primeira entrega
 
@@ -115,7 +122,9 @@ Veja o [checklist e roteiro da segunda entrega](docs/segunda-entrega.md) e as [o
 
 ## Execução
 
-Ainda não há aplicação ou script de criação do banco para executar. As versões do JDK, dependências, configuração de conexão e comandos de execução serão documentados quando a implementação for concluída e validada.
+Siga o [passo a passo de execução e testes](docs/execucao.md). Depois de preparar MySQL e as variáveis de ambiente, execute `mvn compile exec:java`. Requer JDK 17 e Maven 3.9+.
+
+`mvn test` executa os testes de modelo e menu. A integração exige SEBO_TEST_URL, SEBO_TEST_USER e SEBO_TEST_PASSWORD; sem elas, os testes com banco são ignorados.
 
 ## Status
 
@@ -125,9 +134,11 @@ Ainda não há aplicação ou script de criação do banco para executar. As ver
 - [x] Diagramas de planejamento disponíveis no repositório.
 - [x] Regras de negócio, decisões e checklist da segunda entrega documentados.
 - [x] Lacunas de negócio resolvidas conforme a primeira entrega e a autorização do grupo.
-- [ ] Classes Java e pilares de POO implementados.
-- [ ] CRUD completo de livros implementado.
-- [ ] Solicitações, aceite/recusa, finalização e histórico implementados.
-- [ ] Script SQL e conexão real com MySQL.
-- [ ] Testes e instruções de execução validados.
+- [x] Classes de usuários e livros, herança e polimorfismo implementados.
+- [x] Composição em Java e polimorfismo de finalização implementados.
+- [x] Cadastro de usuários e CRUD completo de livros implementados.
+- [x] Solicitações, aceite/recusa, finalização e histórico implementados.
+- [x] Script SQL e conexão real com MySQL.
+- [x] Testes e execução da etapa de cadastros/CRUD validados ([evidências](docs/validacao-etapa1.md)).
+- [x] Testes e demonstração dos fluxos restantes concluídos neste ambiente ([evidências](docs/validacao-etapa2.md)).
 - [ ] Contribuições efetivas de todos verificadas antes da entrega.
