@@ -13,8 +13,11 @@
 
 Esses PDFs não estão incluídos neste repositório. Os documentos de planejamento não comprovam testes; as evidências da etapa implementada estão no relatório de validação abaixo.
 
-## Implementação — etapa 1
+## Implementação e entrega
 
 - [Execução e testes](execucao.md).
 - [Guia para explicar o código](guia-do-codigo.md).
-- [Validação realizada](validacao-etapa1.md).
+- [Validação da etapa 1](validacao-etapa1.md): registro histórico do CRUD.
+- [Validação da etapa 2](validacao-etapa2.md): negociações e histórico.
+- [Conferência final](conferencia-final.md): correspondência com os PDFs, contribuições e validação integrada.
+- [Roteiro de demonstração](roteiro-demonstracao.md).

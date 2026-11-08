@@ -42,8 +42,8 @@ Os responsáveis e períodos do planejamento original estão no [README](../READ
 - [x] Testar entradas inválidas e transições de estado indevidas.
 - [x] Testar que solicitações simultâneas não geram duas negociações ativas.
 - [x] Verificar compatibilidade entre SQL, DER e classes Java.
-- [ ] Executar seguindo apenas as instruções do README.
-- [ ] Conferir contribuições reais de Cauã e João Pedro.
+- [x] Executar seguindo o README e o guia de execução, em cópia limpa de main.
+- [x] Conferir contribuições reais de Cauã e João Pedro e integrar ambas em main.
 - [ ] Conferir prazo e forma de envio na disciplina.
 
 ## Roteiro sugerido de demonstração
@@ -52,12 +52,12 @@ Cadastrar dois usuários; cadastrar um livro; consultar e editar seus dados; sol
 
 Os [cenários de aceite](regras-de-negocio.md) detalham os casos de concorrência, permissões, transferência, exclusão e preservação do histórico a testar.
 
-## Instruções de execução a completar junto com o código
+## Instruções de execução disponíveis
 
-Documentar versões, dependências, criação do banco, configuração local de credenciais, comandos de compilação, testes e início da aplicação. Não publicar senhas. Não declarar testes como aprovados antes de executá-los.
+O [guia de execução](execucao.md) documenta versões, dependências, criação do banco, configuração local de credenciais, compilação, testes e início da aplicação. A [conferência final](conferencia-final.md) registra a validação executada. Credenciais locais não fazem parte do repositório.
 
-## Progresso da etapa 1
+## Resultado integrado
 
 Cadastros e CRUD de livros preservados. RF03–RF06, composição e finalização polimórfica implementados nesta etapa. Consulte [validação anterior](validacao-etapa1.md) e [validação atual](validacao-etapa2.md).
 
-Os itens técnicos marcados refletem execução neste ambiente Linux. A dupla ainda deve reproduzir as instruções em seu computador, revisar o PR e confirmar o prazo/canal de envio. A publicação do PR não equivale a merge nem entrega no Studeo.
+Os itens técnicos foram verificados em Linux na etapa 2 e novamente em Windows sobre cópia limpa de main após os merges. A dupla deve ensaiar no ambiente que utilizará na apresentação e confirmar prazo/canal de envio. A integração no GitHub não equivale ao envio na plataforma acadêmica.

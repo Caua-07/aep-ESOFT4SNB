@@ -2,9 +2,9 @@
 
 ## Base e alcance
 
-Documento consolidado em 04/11/2026 para orientar a futura implementação. Preserva RF01–RF06, Java, MySQL, JDBC e a arquitetura da primeira entrega. As definições que o PDF deixou abertas são decisões de detalhamento autorizadas pelo grupo nesta etapa, não exigências atribuídas ao professor.
+Documento consolidado em 04/11/2026 e aplicado na implementação. Preserva RF01–RF06, Java, MySQL, JDBC e a arquitetura da primeira entrega. As definições que o PDF deixou abertas são decisões de detalhamento autorizadas pelo grupo, não exigências atribuídas ao professor. A verificação está registrada na [conferência final](conferencia-final.md).
 
-Esta especificação não significa que as funcionalidades já foram implementadas.
+Este documento define as regras; os relatórios de validação registram as evidências de implementação e execução.
 
 ## 1. Usuários — RF01
 
@@ -88,7 +88,7 @@ A mudança de propriedade, o status do livro e o encerramento do pedido devem se
 
 Nenhuma outra transição faz parte da entrega. Cancelamento, expiração automática, prazos de devolução, multas, chat, pagamentos e notificações ficam fora do escopo.
 
-## 9. Critérios de aceite para implementação futura
+## 9. Critérios de aceite da implementação
 
 | Cenário | Resultado esperado |
 | --- | --- |
@@ -111,4 +111,4 @@ Nenhuma outra transição faz parte da entrega. Cancelamento, expiração autom�
 | Falha ao salvar parte da negociação | Transação revertida; sem estado intermediário persistido. |
 | Programa é reiniciado | Cadastros, estados, propriedade e histórico continuam disponíveis. |
 
-Estes são critérios a testar, não resultados de testes já executados.
+Esta tabela especifica o comportamento esperado. Os resultados executados estão em [validação da etapa 2](validacao-etapa2.md) e [conferência final](conferencia-final.md).

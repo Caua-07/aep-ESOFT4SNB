@@ -15,11 +15,11 @@ As lacunas de negócio foram resolvidas em 04/11/2026, por autorização do grup
 | E-mail institucional | Formato e unicidade validados; vínculo institucional declarado, sem domínio fixo ou confirmação por e-mail. |
 | Identificação do usuário | Usuário atuante selecionado para demonstração; não ampliar o escopo com autenticação. |
 
-## Pendências administrativas e técnicas para a próxima etapa
+## Situação técnica e pendências administrativas
 
 - Confirmar prazo oficial e canal de envio com a disciplina.
 - Confirmar o peso de POO: tabela de avaliação indica 0,3; orientação final menciona 0,4.
 - Ambiente definido na etapa 1: Java 17, Maven 3.9+, MySQL 8.4, Connector/J 8.4.0; consultar o guia de execução.
-- Implementar e executar os critérios de aceite; documentar os comandos efetivamente verificados.
+- RF01–RF06 e os critérios técnicos foram implementados e verificados. Evidências: [validação da etapa 2](validacao-etapa2.md) e [conferência final](conferencia-final.md).
 
-Não há decisão de negócio bloqueando o início do código. As definições acima não devem ser apresentadas como funcionalidades já implementadas.
+Não há decisão de negócio pendente para o escopo desta entrega. As decisões acima estão refletidas na implementação; prazo, canal de envio e avaliação acadêmica são externos à validação técnica.

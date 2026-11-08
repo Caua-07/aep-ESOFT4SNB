@@ -8,7 +8,7 @@ Projeto da Atividade de Estudo Programada (AEP), 4º semestre de 2026.2, UniCesu
 **Turma:** ESOFT4S-NB.  
 **Repositório:** https://github.com/Caua-07/aep-ESOFT4SNB
 
-> Status: RF01–RF06 implementados no terminal com persistência MySQL: cadastros, CRUD de livros, solicitações, aceite/recusa, devolução, troca e histórico. Validação técnica em [validacao-etapa2.md](docs/validacao-etapa2.md); revisão da dupla e envio acadêmico permanecem pendentes.
+> Status: RF01–RF06 implementados, revisados e integrados em `main`, com persistência MySQL. Os PRs das duas etapas foram incorporados preservando as contribuições dos integrantes. Consulte a [conferência final da segunda entrega](docs/conferencia-final.md), com os requisitos e resultados verificados. O envio na disciplina deve ser realizado pela dupla.
 
 ## Problema e proposta
 
@@ -141,4 +141,6 @@ Siga o [passo a passo de execução e testes](docs/execucao.md). Depois de prepa
 - [x] Script SQL e conexão real com MySQL.
 - [x] Testes e execução da etapa de cadastros/CRUD validados ([evidências](docs/validacao-etapa1.md)).
 - [x] Testes e demonstração dos fluxos restantes concluídos neste ambiente ([evidências](docs/validacao-etapa2.md)).
-- [ ] Contribuições efetivas de todos verificadas antes da entrega.
+- [x] Contribuições de Cauã e João Pedro verificadas e preservadas no histórico de main.
+- [x] Duas etapas integradas em main; versão integrada compilada, testada e executada em cópia limpa.
+- [ ] Conferir prazo/canal e realizar o envio acadêmico.
