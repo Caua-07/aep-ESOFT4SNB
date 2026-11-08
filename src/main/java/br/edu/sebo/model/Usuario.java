@@ -1,8 +1,11 @@
 package br.edu.sebo.model;
 
 import java.util.Locale;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Usuario {
+    private final List<Livro> livros = new ArrayList<>();
     private final int id;
     private final String nomeCompleto;
     private final String emailInstitucional;
@@ -32,6 +35,15 @@ public class Usuario {
         }
         return true;
     }
+
+    public List<Livro> getLivros() { return List.copyOf(livros); }
+
+    // Apenas Livro coordena os dois lados da relação.
+    void adicionarLivro(Livro livro) {
+        if (!livros.contains(livro)) livros.add(livro);
+    }
+
+    void removerLivro(Livro livro) { livros.remove(livro); }
 
     public int getId() { return id; }
     public String getNomeCompleto() { return nomeCompleto; }

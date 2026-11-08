@@ -13,9 +13,9 @@ public class Main {
             try (Connection teste = conexao.abrir()) {
                 if (!teste.isValid(5)) throw new SQLException("Conexão indisponível.");
             }
-            System.out.println("Conectado ao MySQL. Etapa: cadastros e CRUD de livros.");
+            System.out.println("Conectado ao MySQL. Cadastros, livros e negociações.");
             System.out.println("Seleção de usuário apenas para demonstração acadêmica, sem autenticação.");
-            new Menu(System.in, System.out, new UsuarioService(conexao), new LivroService(conexao)).executar();
+            new Menu(System.in, System.out, new UsuarioService(conexao), new LivroService(conexao), new SolicitacaoService(conexao)).executar();
         } catch (IllegalArgumentException e) {
             System.err.println(e.getMessage());
             System.exit(1);

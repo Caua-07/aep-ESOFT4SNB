@@ -41,6 +41,26 @@ public class LivroDAO {
         return livros;
     }
 
+    public List<Livro> listarPorProprietario(int usuarioId) throws SQLException {
+        List<Livro> livros = new ArrayList<>();
+        try (PreparedStatement s = conexao.prepareStatement("SELECT * FROM livros WHERE usuario_id = ? ORDER BY id")) {
+            s.setInt(1, usuarioId);
+            try (ResultSet r = s.executeQuery()) {
+                while (r.next()) livros.add(lerLivro(r));
+            }
+        }
+        return livros;
+    }
+
+    public void salvarNegociacao(int livroId, int proprietarioId, StatusLivro status) throws SQLException {
+        try (PreparedStatement s = conexao.prepareStatement("UPDATE livros SET usuario_id = ?, status = ? WHERE id = ?")) {
+            s.setInt(1, proprietarioId);
+            s.setString(2, status.name());
+            s.setInt(3, livroId);
+            if (s.executeUpdate() != 1) throw new SQLException("Livro não atualizado.");
+        }
+    }
+
     public void atualizar(Livro livro) throws SQLException {
         String sql = "UPDATE livros SET titulo = ?, autor = ?, disciplina = ?, estado_conservacao = ?, tipo_oferta = ? WHERE id = ?";
         try (PreparedStatement s = conexao.prepareStatement(sql)) {
@@ -83,9 +103,13 @@ public class LivroDAO {
         String disciplina = r.getString("disciplina");
         String conservacao = r.getString("estado_conservacao");
         StatusLivro status = StatusLivro.valueOf(r.getString("status"));
+        Livro livro;
         if (TipoOferta.valueOf(r.getString("tipo_oferta")) == TipoOferta.TROCA) {
-            return new LivroTroca(id, dono, titulo, autor, disciplina, conservacao, status);
+            livro = new LivroTroca(id, dono, titulo, autor, disciplina, conservacao, status);
+        } else {
+            livro = new LivroEmprestimo(id, dono, titulo, autor, disciplina, conservacao, status);
         }
-        return new LivroEmprestimo(id, dono, titulo, autor, disciplina, conservacao, status);
+        livro.vincularProprietario(new UsuarioDAO(conexao).buscar(dono));
+        return livro;
     }
 }

@@ -8,7 +8,7 @@ Projeto da Atividade de Estudo Programada (AEP), 4º semestre de 2026.2, UniCesu
 **Turma:** ESOFT4S-NB.  
 **Repositório:** https://github.com/Caua-07/aep-ESOFT4SNB
 
-> Status: primeira etapa funcional implementada: cadastro de usuários e CRUD de livros em Java/JDBC com MySQL. Negociações e histórico ficam para a próxima etapa. A segunda entrega completa ainda não está concluída.
+> Status: RF01–RF06 implementados no terminal com persistência MySQL: cadastros, CRUD de livros, solicitações, aceite/recusa, devolução, troca e histórico. Validação técnica em [validacao-etapa2.md](docs/validacao-etapa2.md); revisão da dupla e envio acadêmico permanecem pendentes.
 
 ## Problema e proposta
 
@@ -58,7 +58,7 @@ As lacunas do planejamento foram detalhadas nas [regras de negócio consolidadas
 | Service | Regras de negócio e coordenação das operações. |
 | Controller/Main | Entrada do usuário e fluxo da aplicação. |
 
-O planejamento prevê a classe abstrata `Livro`, as subclasses `LivroTroca` e `LivroEmprestimo`, sobrescrita de `finalizarNegociacao()` com `@Override` e composição 1:N entre usuário e livros.
+O código utiliza a classe abstrata `Livro`, as subclasses `LivroTroca` e `LivroEmprestimo`, sobrescrita de `finalizarNegociacao(Usuario solicitante)` com `@Override` e composição 1:N entre usuário e livros.
 
 Consulte os [diagramas de classes e banco](docs/diagramas.md).
 
@@ -134,11 +134,11 @@ Siga o [passo a passo de execução e testes](docs/execucao.md). Depois de prepa
 - [x] Diagramas de planejamento disponíveis no repositório.
 - [x] Regras de negócio, decisões e checklist da segunda entrega documentados.
 - [x] Lacunas de negócio resolvidas conforme a primeira entrega e a autorização do grupo.
-- [x] Classes de usuários e livros, herança e polimorfismo inicial implementados.
-- [ ] Composição em Java e polimorfismo de finalização implementados.
+- [x] Classes de usuários e livros, herança e polimorfismo implementados.
+- [x] Composição em Java e polimorfismo de finalização implementados.
 - [x] Cadastro de usuários e CRUD completo de livros implementados.
-- [ ] Solicitações, aceite/recusa, finalização e histórico implementados.
+- [x] Solicitações, aceite/recusa, finalização e histórico implementados.
 - [x] Script SQL e conexão real com MySQL.
 - [x] Testes e execução da etapa de cadastros/CRUD validados ([evidências](docs/validacao-etapa1.md)).
-- [ ] Testes e demonstração dos fluxos restantes concluídos.
+- [x] Testes e demonstração dos fluxos restantes concluídos neste ambiente ([evidências](docs/validacao-etapa2.md)).
 - [ ] Contribuições efetivas de todos verificadas antes da entrega.

@@ -24,6 +24,14 @@ public class Conexao {
     }
 
     public Connection abrir() throws SQLException {
-        return DriverManager.getConnection(url, usuario, senha);
+        Connection conexao = DriverManager.getConnection(url, usuario, senha);
+        try (var comando = conexao.createStatement()) {
+            // DATETIME não armazena fuso; todas as datas da aplicação usam UTC.
+            comando.execute("SET time_zone = '+00:00'");
+            return conexao;
+        } catch (SQLException e) {
+            conexao.close();
+            throw e;
+        }
     }
 }

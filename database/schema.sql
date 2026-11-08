@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS livros (
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Estrutura preparada para a próxima etapa. Ainda não há menu de solicitações.
+-- Histórico independente dos metadados atuais do livro. Datas gravadas em UTC pela aplicação.
 CREATE TABLE IF NOT EXISTS solicitacoes (
     id INT PRIMARY KEY AUTO_INCREMENT,
     livro_id INT NOT NULL,

@@ -13,7 +13,7 @@ class MenuTest {
         Conexao conexao = new Conexao("jdbc:mysql://127.0.0.1/nao_usado", "teste", "teste");
         new Menu(new ByteArrayInputStream(entrada.getBytes(StandardCharsets.UTF_8)),
                 new PrintStream(saida, true, StandardCharsets.UTF_8),
-                new UsuarioService(conexao), new LivroService(conexao)).executar();
+                new UsuarioService(conexao), new LivroService(conexao), new SolicitacaoService(conexao)).executar();
         return saida.toString(StandardCharsets.UTF_8);
     }
 
@@ -36,5 +36,11 @@ class MenuTest {
     @Test
     void fimDaEntradaNaoCausaLoopOuCadastroParcial() {
         assertTrue(executar("1\nAna\n").contains("Entrada encerrada"));
+    }
+    @Test
+    void exigeUsuarioAntesDasOperacoesDeNegociacao() {
+        String saida = executar("9\n10\n11\n12\n13\n14\n15\n16\n0\n");
+        assertEquals(8, saida.split("Selecione um usuário", -1).length - 1);
+        assertTrue(saida.contains("Até logo"));
     }
 }
