@@ -1,4 +1,4 @@
-# Validação da etapa 2 — 07/11/2026
+# Validação da etapa 2 - 07/11/2026
 
 ## Base e ambiente
 
@@ -41,7 +41,7 @@ Sete inicializações Java, usando Main e entrada pelo terminal, verificadas por
 | 6 | Ana cria novo pedido para o exemplar agora pertencente a Bruno. |
 | 7 | Bruno recusa; consulta histórico RECUSADA. |
 
-A demonstração foi repetida após as últimas alterações, em banco fictício separado. Use [roteiro-demonstracao.md](roteiro-demonstracao.md) para apresentação com IDs retornados no seu ambiente.
+A demonstração foi repetida após as últimas alterações, em banco fictício separado. Passos utilizados: [roteiro-demonstracao.md](roteiro-demonstracao.md).
 
 ## Limites e pendências
 
@@ -49,4 +49,3 @@ A demonstração foi repetida após as últimas alterações, em banco fictício
 - O controle de concorrência pressupõe gravações pelo serviço que bloqueia o livro. SQL externo fora do protocolo não é validado pela aplicação.
 - Sem mudança estrutural de schema. Dados anteriores não são apagados nem suas datas convertidas; novas operações usam UTC.
 - Identificação por seleção de usuário é simulação acadêmica, não autenticação.
-- Revisão da dupla, publicação/merge conforme acesso e envio acadêmico são etapas separadas da validação técnica. Confirmar prazo/canal e divergência do peso de POO (0,3 na tabela; 0,4 nas orientações finais).

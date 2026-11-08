@@ -103,13 +103,3 @@ erDiagram
 O script database/schema.sql usa INT para PKs/FKs e AUTO_INCREMENT nos identificadores. O diagrama preserva as três entidades da primeira entrega e detalha os campos necessários à finalização e ao histórico. Em solicitacoes, usuario_id identifica o solicitante e ofertante_original_id identifica o proprietário à época; em livros, usuario_id identifica o proprietário atual. Data de decisão é preenchida no aceite ou recusa; data de finalização apenas na conclusão. Datas ainda não ocorridas permanecem nulas.
 
 O DER não implementa sozinho o controle de concorrência. A solução precisa garantir que duas solicitações simultâneas não mantenham negociações ativas para o mesmo livro.
-
-## Alterações de documentação em relação ao desenho original
-
-- Corrigida a direção das setas de herança.
-- Explicitada a composição descrita no texto da primeira entrega.
-- Mantidas as entidades e os campos de negócio originais; adicionados ofertante original, título/tipo da época e datas de decisão/finalização para atender ao histórico.
-- Data de solicitação detalhada com hora para rastrear pedidos; todas as datas devem usar a mesma referência de fuso documentada na implementação.
-- Usada indicação INT para os identificadores no modelo planejado para MySQL, conforme a definição física do script.
-
-As datas são LocalDateTime no Java e DATETIME no MySQL; cada conexão define UTC. Solicitacao usa IDs para associações históricas e preserva título/tipo da época. Usuario e Livro mantêm também uma relação de objetos em memória; consulte o guia para hidratação e transferência entre coleções.

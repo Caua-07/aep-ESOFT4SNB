@@ -2,13 +2,13 @@
 
 Sistema de troca e empréstimo de livros acadêmicos entre estudantes.
 
-Projeto da Atividade de Estudo Programada (AEP), 4º semestre de 2026.2, UniCesumar — Maringá/PR.
+Projeto da Atividade de Estudo Programada (AEP), 4º semestre de 2026.2, UniCesumar - Maringá/PR.
 
-**Integrantes:** Cauã Olivastro Braga e João Pedro Parra Lopes.  
-**Turma:** ESOFT4S-NB.  
+**Integrantes:** Cauã Olivastro Braga e João Pedro Parra Lopes.
+**Turma:** ESOFT4S-NB.
 **Repositório:** https://github.com/Caua-07/aep-ESOFT4SNB
 
-> Status: RF01–RF06 implementados, revisados e integrados em `main`, com persistência MySQL. Os PRs das duas etapas foram incorporados preservando as contribuições dos integrantes. Consulte a [conferência final da segunda entrega](docs/conferencia-final.md), com os requisitos e resultados verificados. O envio na disciplina deve ser realizado pela dupla.
+Aplicação Java com menu no terminal e banco MySQL. Inclui cadastro de usuários, CRUD de livros, solicitações, trocas, empréstimos e histórico.
 
 ## Problema e proposta
 
@@ -18,8 +18,8 @@ A descoberta descrita na primeira entrega destaca a dispersão das ofertas em gr
 
 ## Alinhamento aos ODS
 
-- **ODS 4 — Educação de Qualidade:** ampliar o acesso a materiais didáticos e reduzir a barreira financeira.
-- **ODS 12 — Consumo e Produção Responsáveis:** incentivar a circulação e o reaproveitamento dos materiais existentes.
+- **ODS 4 - Educação de Qualidade:** ampliar o acesso a materiais didáticos e reduzir a barreira financeira.
+- **ODS 12 - Consumo e Produção Responsáveis:** incentivar a circulação e o reaproveitamento dos materiais existentes.
 
 ## Requisitos da primeira entrega
 
@@ -36,7 +36,7 @@ A numeração e o conteúdo abaixo espelham o PDF da primeira entrega.
 
 A segunda entrega exige **CRUD completo da entidade principal (Livro)**: cadastro, consulta, edição e exclusão. Esse detalhamento complementa RF02; não substitui os demais requisitos.
 
-As lacunas do planejamento foram detalhadas nas [regras de negócio consolidadas](docs/regras-de-negocio.md), preservando RF01–RF06. O [registro de decisões](docs/decisoes-pendentes.md) documenta as escolhas e as pendências administrativas.
+As lacunas do planejamento foram detalhadas nas [regras de negócio consolidadas](docs/regras-de-negocio.md), preservando RF01-RF06. O [registro de decisões](docs/decisoes-pendentes.md) documenta as escolhas da implementação.
 
 - Pedidos PENDENTES e ACEITOS bloqueiam novas solicitações.
 - No empréstimo, a devolução mantém o proprietário e libera o exemplar.
@@ -100,10 +100,10 @@ Planejamento original do PDF, preservado para rastreabilidade. As datas não rep
 
 | Sprint / período de 2026 | Épico | User story | Responsável |
 | --- | --- | --- | --- |
-| Sprint 1 — 11/09 a 25/09 | Cadastros e Perfis | COMO UM estudante EU QUERO cadastrar meus dados e os livros que possuo PARA QUE outros estudantes possam encontrá-los para troca ou empréstimo. | Cauã |
-| Sprint 2 — 26/09 a 10/10 | Motor de Solicitações | COMO UM estudante EU QUERO solicitar um livro disponível PARA QUE eu possa obtê-lo por troca ou empréstimo. | João Pedro |
-| Sprint 3 — 11/10 a 25/10 | Aceite e Regras de Negócio | COMO UM proprietário de um livro EU QUERO aceitar ou recusar solicitações recebidas PARA QUE apenas uma negociação fique ativa por vez. | Cauã e João Pedro |
-| Sprint 4 — 26/10 até a 2ª entrega | Finalização e Histórico | COMO UM estudante EU QUERO confirmar a devolução ou a troca e consultar meu histórico de negociações PARA QUE eu acompanhe os livros que ofertei e solicitei. | Todos |
+| Sprint 1 - 11/09 a 25/09 | Cadastros e Perfis | COMO UM estudante EU QUERO cadastrar meus dados e os livros que possuo PARA QUE outros estudantes possam encontrá-los para troca ou empréstimo. | Cauã |
+| Sprint 2 - 26/09 a 10/10 | Motor de Solicitações | COMO UM estudante EU QUERO solicitar um livro disponível PARA QUE eu possa obtê-lo por troca ou empréstimo. | João Pedro |
+| Sprint 3 - 11/10 a 25/10 | Aceite e Regras de Negócio | COMO UM proprietário de um livro EU QUERO aceitar ou recusar solicitações recebidas PARA QUE apenas uma negociação fique ativa por vez. | Cauã e João Pedro |
+| Sprint 4 - 26/10 até a 2ª entrega | Finalização e Histórico | COMO UM estudante EU QUERO confirmar a devolução ou a troca e consultar meu histórico de negociações PARA QUE eu acompanhe os livros que ofertei e solicitei. | Todos |
 
 ## Segunda entrega
 
@@ -118,29 +118,10 @@ O foco é entregar software funcional e integrado, mantendo aderência ao planej
 
 Também são exigidas contribuições de todos os integrantes e instruções claras de instalação e execução. Não é exigida interface gráfica avançada.
 
-Veja o [checklist e roteiro da segunda entrega](docs/segunda-entrega.md) e as [orientações de contribuição](CONTRIBUTING.md).
+Veja o [checklist da segunda entrega](docs/segunda-entrega.md) e as [orientações de contribuição](CONTRIBUTING.md).
 
 ## Execução
 
 Siga o [passo a passo de execução e testes](docs/execucao.md). Depois de preparar MySQL e as variáveis de ambiente, execute `mvn compile exec:java`. Requer JDK 17 e Maven 3.9+.
 
 `mvn test` executa os testes de modelo e menu. A integração exige SEBO_TEST_URL, SEBO_TEST_USER e SEBO_TEST_PASSWORD; sem elas, os testes com banco são ignorados.
-
-## Status
-
-- [x] Problema, ODS e requisitos documentados.
-- [x] Cronograma original e responsáveis registrados.
-- [x] Estrutura real de pastas criada.
-- [x] Diagramas de planejamento disponíveis no repositório.
-- [x] Regras de negócio, decisões e checklist da segunda entrega documentados.
-- [x] Lacunas de negócio resolvidas conforme a primeira entrega e a autorização do grupo.
-- [x] Classes de usuários e livros, herança e polimorfismo implementados.
-- [x] Composição em Java e polimorfismo de finalização implementados.
-- [x] Cadastro de usuários e CRUD completo de livros implementados.
-- [x] Solicitações, aceite/recusa, finalização e histórico implementados.
-- [x] Script SQL e conexão real com MySQL.
-- [x] Testes e execução da etapa de cadastros/CRUD validados ([evidências](docs/validacao-etapa1.md)).
-- [x] Testes e demonstração dos fluxos restantes concluídos neste ambiente ([evidências](docs/validacao-etapa2.md)).
-- [x] Contribuições de Cauã e João Pedro verificadas e preservadas no histórico de main.
-- [x] Duas etapas integradas em main; versão integrada compilada, testada e executada em cópia limpa.
-- [ ] Conferir prazo/canal e realizar o envio acadêmico.

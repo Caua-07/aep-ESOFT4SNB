@@ -1,4 +1,4 @@
-# Roteiro de demonstração — Sebo Colaborativo
+# Roteiro de demonstração - Sebo Colaborativo
 
 Prepare o banco da aplicação e execute `mvn compile exec:java`, conforme execucao.md. Use dados fictícios e anote os IDs retornados: eles não precisam começar em 1.
 
@@ -12,7 +12,3 @@ Prepare o banco da aplicação e execute `mvn compile exec:java`, conforme execu
 8. Saia (0), execute novamente e confira livros e histórico. As informações devem continuar no MySQL.
 9. Como Ana, solicite o livro agora pertencente a Bruno. Como Bruno, recuse (13). O pedido fica RECUSADA e novos pedidos são liberados.
 10. Edite o título/tipo depois do encerramento e confira que o histórico anterior não mudou. Tente finalizar novamente: recusado sem mudar datas ou dono. Tente excluir um exemplar com histórico: bloqueado.
-
-## Explicação oral
-
-Menu recebe a entrada; Service valida regras e coordena a transação; DAO executa SQL; Model representa os dados e comportamentos. Livro é abstrato, as duas subclasses herdam seus campos e sobrescrevem finalizarNegociacao. Usuario possui uma coleção de livros; a troca move o exemplar entre proprietários. MySQL preserva os dados entre processos. Selecionar usuário simula identidade para fins acadêmicos; não é login seguro.
