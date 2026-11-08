@@ -1,4 +1,4 @@
-# Validação da etapa 1 — 07/11/2026
+# Validação da etapa 1 - 07/11/2026
 
 ## Ambiente utilizado
 
@@ -23,4 +23,4 @@ Não foram implementados ou validados os fluxos de solicitar/aceitar/recusar/fin
 
 A concorrência de pedidos será testada na próxima etapa, junto com seu serviço. O SQL desta etapa tem índice de consulta e FKs; a regra de apenas um pedido ativo deverá ser garantida pela transação do futuro serviço.
 
-O resultado não substitui a participação real dos dois integrantes nem significa conclusão da AEP inteira. Instruções de reprodução em [execucao.md](execucao.md).
+Instruções de execução em [execucao.md](execucao.md).

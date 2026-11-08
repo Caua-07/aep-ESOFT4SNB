@@ -115,7 +115,7 @@ public class Menu {
                 + " | Proprietário (ID): " + livro.getUsuarioId());
         if (livros.temSolicitacaoAtiva(livro.getId())) {
             saida.println(livro.getStatus() == StatusLivro.DISPONIVEL
-                    ? "Solicitação pendente — novos pedidos e edição bloqueados, mesmo com status DISPONIVEL."
+                    ? "Solicitação pendente - novos pedidos e edição bloqueados, mesmo com status DISPONIVEL."
                     : "Solicitação aceita: novos pedidos e edição bloqueados.");
         }
     }
@@ -159,7 +159,7 @@ public class Menu {
             saida.println("Pedido " + pedido.id() + " | Livro " + pedido.livroId() + " | " + pedido.tituloLivro()
                     + " | " + pedido.tipoOferta() + " | " + pedido.status());
             saida.println("Ofertante original: " + pedido.ofertanteOriginalId() + " | Solicitante: " + pedido.solicitanteId());
-            saida.println("Datas em UTC — Solicitação: " + pedido.dataSolicitacao() + " | Decisão: " + pedido.dataDecisao()
+            saida.println("Datas em UTC - Solicitação: " + pedido.dataSolicitacao() + " | Decisão: " + pedido.dataDecisao()
                     + " | Finalização: " + pedido.dataFinalizacao());
         }
         if (!encontrou) saida.println("Nenhuma solicitação encontrada.");

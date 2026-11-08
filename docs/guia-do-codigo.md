@@ -1,4 +1,4 @@
-# Guia para explicar o código
+# Organização do código
 
 ## Exemplo: cadastrar livro
 
@@ -26,7 +26,7 @@ Os arquivos ficam em src/main/java/br/edu/sebo.
 | service/UsuarioService | Coordena cadastro/consulta e trata e-mail duplicado. |
 | service/LivroService | Confere proprietário, pedido ativo e histórico antes de alterar. |
 
-## Conceitos para apresentar
+## Conceitos utilizados
 
 - Encapsulamento: atributos privados e getters; status e dono não são editáveis pelo menu.
 - Abstração/herança: Livro não é instanciado diretamente; subclasses representam ofertas.
@@ -37,7 +37,7 @@ Os arquivos ficam em src/main/java/br/edu/sebo.
 - Transação: regras e gravação de edição/exclusão acontecem juntas; rollback desfaz a operação em caso de falha.
 - FOR UPDATE: bloqueia o livro durante a verificação e alteração. SolicitacaoService segue a mesma ordem: livro primeiro, pedido depois.
 
-## Novas classes e fluxo de negociação
+## Solicitações e negociações
 
 - `Solicitacao`: record Java 17, uma fotografia imutável da linha do pedido; seus métodos de leitura são `id()`, `status()`, `tituloLivro()` etc. O record é uma classe de dados, não contém SQL.
 - `StatusSolicitacao`: enum dos quatro estados permitidos.
@@ -48,12 +48,10 @@ Ao solicitar, o serviço bloqueia o livro, confere disponibilidade e ausência d
 
 Na finalização, o serviço chama `livro.finalizarNegociacao(solicitante)` usando a referência abstrata Livro. A JVM executa o @Override correto: LivroTroca transfere a mesma instância entre as coleções e disponibiliza; LivroEmprestimo apenas disponibiliza. O serviço grava o livro e FINALIZADA/data na mesma transação. Os objetos são locais à operação e não são publicados se houver rollback.
 
-A composição usa `Usuario.getLivros()` e `Livro.getProprietario()`. O DAO hidrata o vínculo do exemplar ao ler o banco; `UsuarioService.buscarComLivros()` carrega a coleção completa para a opção 16. A lista retornada é uma cópia não modificável. Os construtores com ID são preservados para compatibilidade; objetos montados diretamente precisam de `vincularProprietario()` antes de finalizar. Não existe cache global: cada consulta reflete novamente o banco.
+A composição usa `Usuario.getLivros()` e `Livro.getProprietario()`. O DAO carrega o vínculo do exemplar ao ler o banco; `UsuarioService.buscarComLivros()` carrega a coleção completa para a opção 16. A lista retornada é uma cópia não modificável. Os construtores com ID são preservados para compatibilidade; objetos montados diretamente precisam de `vincularProprietario()` antes de finalizar. Não existe cache global: cada consulta reflete novamente o banco.
 
 O bloqueio do livro serializa operações da aplicação sobre o mesmo exemplar. Escritas SQL externas que ignorem esse protocolo não são cobertas pela regra de uma solicitação ativa. Não há alteração do schema nem índice UNIQUE adicional nesta etapa.
 
 ## Escolhas de simplicidade
 
 Java e JDBC diretos deixam as regras e o SQL visíveis. Maven apenas organiza dependências e testes. Mantivemos transações explícitas, sem estrutura genérica, framework web ou ORM.
-
-Cada integrante deve conseguir explicar um cadastro do menu ao banco, a diferença entre DAO e Service e um teste de regra de negócio. A dupla deve revisar e conseguir explicar as contribuições antes da apresentação.

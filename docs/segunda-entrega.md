@@ -6,25 +6,12 @@ Segundo as diretrizes, a entrega deve conter código-fonte completo, aplicação
 
 | Critério | Evidência a preparar | Peso |
 | --- | --- | --- |
-| Aderência | Fluxos correspondentes a RF01–RF06. | 0,2 |
+| Aderência | Fluxos correspondentes a RF01-RF06. | 0,2 |
 | POO | Classe abstrata ou interface, herança, polimorfismo com @Override; código tipado e convenções de nomes. Demonstrar também a composição prevista. | 0,3 |
 | CRUD | Cadastro, consulta, edição e exclusão de livros, com tratamento de vínculos. | 0,3 |
 | Banco | Dados persistidos em MySQL e script de criação das tabelas em /database compatível com as classes. | 0,2 |
 
 As diretrizes preveem nota zero automática quando o software não executa, ignora os pilares de POO ou diverge totalmente do planejamento. Listas em memória não substituem a persistência exigida.
-
-## Sequência de implementação utilizada
-
-1. Usar as [regras de negócio consolidadas](regras-de-negocio.md) como especificação da implementação.
-2. Definir versões e configuração do ambiente Java/MySQL.
-3. Criar as classes de domínio e o script SQL.
-4. Implementar cadastro de usuários e CRUD de livros.
-5. Implementar solicitações, aceite/recusa e bloqueio de negociação simultânea.
-6. Implementar finalização de empréstimo/troca e histórico.
-7. Testar os fluxos e a persistência.
-8. Documentar instalação e execução e validar a partir de uma cópia limpa do repositório.
-
-Os responsáveis e períodos do planejamento original estão no [README](../README.md). Um novo cronograma deve refletir datas reais combinadas pelo grupo, sem marcar as etapas anteriores como executadas.
 
 ## Checklist de aceite
 
@@ -44,20 +31,7 @@ Os responsáveis e períodos do planejamento original estão no [README](../READ
 - [x] Verificar compatibilidade entre SQL, DER e classes Java.
 - [x] Executar seguindo o README e o guia de execução, em cópia limpa de main.
 - [x] Conferir contribuições reais de Cauã e João Pedro e integrar ambas em main.
-- [ ] Conferir prazo e forma de envio na disciplina.
-
-## Roteiro sugerido de demonstração
-
-Cadastrar dois usuários; cadastrar um livro; consultar e editar seus dados; solicitar com o segundo usuário; tentar outro pedido; aceitar como proprietário; concluir a negociação; consultar o histórico; reiniciar e verificar os dados. Demonstrar a recusa e a exclusão com registros separados, além dos dois tipos de negociação.
-
-Os [cenários de aceite](regras-de-negocio.md) detalham os casos de concorrência, permissões, transferência, exclusão e preservação do histórico a testar.
 
 ## Instruções de execução disponíveis
 
 O [guia de execução](execucao.md) documenta versões, dependências, criação do banco, configuração local de credenciais, compilação, testes e início da aplicação. A [conferência final](conferencia-final.md) registra a validação executada. Credenciais locais não fazem parte do repositório.
-
-## Resultado integrado
-
-Cadastros e CRUD de livros preservados. RF03–RF06, composição e finalização polimórfica implementados nesta etapa. Consulte [validação anterior](validacao-etapa1.md) e [validação atual](validacao-etapa2.md).
-
-Os itens técnicos foram verificados em Linux na etapa 2 e novamente em Windows sobre cópia limpa de main após os merges. A dupla deve ensaiar no ambiente que utilizará na apresentação e confirmar prazo/canal de envio. A integração no GitHub não equivale ao envio na plataforma acadêmica.
