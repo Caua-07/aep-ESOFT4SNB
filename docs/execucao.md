@@ -35,7 +35,7 @@ mvn compile exec:java
 
 Linux/macOS: defina as mesmas três variáveis com `export` e execute `mvn compile exec:java`. Na IDE, configure as variáveis na execução de Main. Arquivos .env não são carregados automaticamente.
 
-A porta padrão é 3306; altere se necessário. A instância isolada usada na validação utilizou 3307; ela e suas credenciais não fazem parte do repositório.
+A porta padrão é 3306; altere se necessário.
 
 ## Menu
 
@@ -86,15 +86,3 @@ O JAR de `mvn package` não inclui dependências; use `mvn exec:java` para execu
 - Tabela inexistente: execute schema.sql no banco indicado na URL.
 - Public Key Retrieval is not allowed: apenas em instância descartável estritamente local sem TLS, acrescente `?allowPublicKeyRetrieval=true&sslMode=DISABLED` à URL. Em conexões remotas, configure TLS.
 - Acentos: configure terminal e IDE para UTF-8; no Windows, `chcp 65001` pode ser necessário.
-
-## Compatibilidade com a etapa 1
-
-O schema permanece compatível: não foram adicionadas, removidas ou alteradas colunas. Quem já executou o schema da etapa 1 não precisa de migração; os dados existentes são preservados. CREATE TABLE IF NOT EXISTS não corrige instalações com outro schema.
-
-Cada conexão da aplicação define a sessão MySQL em UTC (`SET time_zone = '+00:00'`). As datas DATETIME são lidas como LocalDateTime e exibidas com indicação UTC. Datas antigas, se gravadas em outro fuso, não são convertidas automaticamente; confirme sua origem antes de uma eventual conversão.
-
-## Demonstração
-
-Siga [roteiro-demonstracao.md](roteiro-demonstracao.md). Resultados efetivamente executados: [validacao-etapa2.md](validacao-etapa2.md).
-
-Execute `mvn clean verify` com as variáveis de teste para compilar, testar e empacotar. São 30 testes, incluindo 17 com MySQL; sem SEBO_TEST_URL esses 17 são ignorados. As duas classes de integração compartilham sebo_test: execute a suíte sequencialmente (padrão do projeto), sem ativar testes paralelos ou duas execuções contra o mesmo banco.
